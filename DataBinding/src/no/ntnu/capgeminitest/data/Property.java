@@ -1,5 +1,5 @@
 package no.ntnu.capgeminitest.data;
 
-public class Property {
-
+public class Property<T> {
+	
 }
