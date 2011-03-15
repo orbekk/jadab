@@ -16,6 +16,7 @@ import no.ntnu.capgeminitest.event.PropertyChangeListener;
  *            The type of this property.
  */
 public class Property<T> {
+    
     T data;
     List<PropertyChangeListener<T>> listeners = new ArrayList<PropertyChangeListener<T>>();
 

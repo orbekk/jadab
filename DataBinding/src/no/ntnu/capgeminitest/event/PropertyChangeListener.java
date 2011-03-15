@@ -9,5 +9,6 @@ import no.ntnu.capgeminitest.data.Property;
  * The property is of type {@Property<T>}.
  */
 public interface PropertyChangeListener<T> extends EventListener {
+    
     void propertyChanged(Property<T> property);
 }
