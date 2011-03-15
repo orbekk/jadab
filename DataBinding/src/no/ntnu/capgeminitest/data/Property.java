@@ -8,8 +8,9 @@ import no.ntnu.capgeminitest.event.PropertyChangeListener;
 /**
  * Hold a property for a class.
  * 
- * A sophisticated wrapper for a property, allowing event handling that can be
- * used with the data binding interface.
+ * A sophisticated wrapper for a property, supporting {@code PropertyChangeListener}s.
+ * 
+ * Used with the data binding framework.
  * 
  * @param <T>
  *            The type of this property.
@@ -22,10 +23,18 @@ public class Property<T> {
         this.data = data;
     }
 
+    /**
+     * @return The data contained in this property.
+     */
     public T get() {
         return data;
     }
 
+    /**
+     * Set the data for this property.
+     * 
+     * Notifies listeners that the data was changed.
+     */
     public void set(T data) {
         this.data = data;
         notifyListeners();
