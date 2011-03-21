@@ -72,11 +72,11 @@ public class Property<T> {
         }
     }
 
-    public void addListener(PropertyChangeListener<T> listener) {
+    void addListener(PropertyChangeListener<T> listener) {
         listeners.add(listener);
     }
 
-    public void removeListener(PropertyChangeListener<T> listener) {
+    void removeListener(PropertyChangeListener<T> listener) {
         listeners.remove(listener);
     }
     
