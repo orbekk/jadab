@@ -17,8 +17,8 @@ import no.ntnu.capgeminitest.event.PropertyChangeListener;
  */
 public class Property<T> {
     
-    T data;
-    List<PropertyChangeListener<T>> listeners = new ArrayList<PropertyChangeListener<T>>();
+    private T data;
+    private List<PropertyChangeListener<T>> listeners = new ArrayList<PropertyChangeListener<T>>();
 
     public Property(T data) {
         this.data = data;
@@ -53,5 +53,16 @@ public class Property<T> {
 
     public void removeListener(PropertyChangeListener<T> listener) {
         listeners.remove(listener);
+    }
+    
+    /**
+     * Override this method to receive property changes.
+     * 
+     * Called before other bindings are notified.
+     * 
+     * Note: Changing the property inside {@code onChange} triggers a recursive call.
+     */
+    protected void onChange(T newValue) {
+        // Empty.
     }
 }

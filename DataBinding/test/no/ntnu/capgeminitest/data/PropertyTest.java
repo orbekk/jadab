@@ -40,4 +40,19 @@ public class PropertyTest {
         property.set(7);
         assertThat(listener.received, equalTo(7));
     }
+    
+    @Test
+    public void testOnChange() {
+        Property<Integer> property_ = new Property<Integer>(20) {
+            @Override protected void onChange(Integer newValue) {
+                assertThat(newValue, equalTo(25));
+                assertThat(listener.received, equalTo(null));
+            }
+        };
+        
+        property_.addListener(listener);
+        property_.set(25);
+        assertThat(listener.received, equalTo(25));
+        
+    }
 }
