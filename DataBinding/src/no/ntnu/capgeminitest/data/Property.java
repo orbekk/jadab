@@ -55,6 +55,17 @@ public class Property<T> {
         // Empty.
     }
     
+    /** 
+     * Create a binding between this property and {@code other}.
+     * 
+     * Immediately notify {@code other} of our value.
+     */
+    public void bind(Property<T> other) {
+        PropertyChangeListener<T> listener = other.getOnPropertyChangeUpdater();
+        addListener(listener);
+        listener.propertyChanged(this);
+    }
+    
     /**
      * Set the data for this property.
      * 

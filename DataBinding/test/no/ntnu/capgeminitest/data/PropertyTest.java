@@ -18,6 +18,16 @@ public class PropertyTest {
             received = property.get();
         }
     }
+    
+    class TestProperty extends Property<Integer> {
+        Integer received = null;
+        
+        public TestProperty() { super(null); }
+        
+        @Override protected void onChange(Integer newValue) {
+            received = newValue;
+        }
+    }
 
     private FakeListener listener = new FakeListener();
     Property<Integer> property;
@@ -53,5 +63,47 @@ public class PropertyTest {
         property_.addListener(listener);
         property_.set(25);
         assertThat(listener.received, equalTo(25));
+    }
+    
+    @Test
+    public void testBinding() {
+        Property<Integer> source = new Property<Integer>(37);
+        Property<Integer> target = new Property<Integer>(null);
+        
+        assertThat(target.get(), equalTo(null));
+        source.bind(target);
+        assertThat(target.get(), equalTo(37));
+        source.set(83);
+        assertThat(target.get(), equalTo(83));
+    }
+    
+    @Test
+    public void testBindingIsOneWay() {
+        Property<Integer> source = new Property<Integer>(37);
+        Property<Integer> target = new Property<Integer>(null);
+        
+        assertThat(target.get(), equalTo(null));
+        assertThat(source.get(), equalTo(37));
+        source.bind(target);
+        assertThat(source.get(), equalTo(37));
+        assertThat(target.get(), equalTo(37));
+        
+        target.set(103);
+        assertThat(source.get(), equalTo(37));
+        assertThat(target.get(), equalTo(103));
+    }
+    
+    @Test
+    public void testOnChangeBinding() {
+        Property<Integer> source = new Property<Integer>(15);
+        TestProperty target = new TestProperty();
+        
+        assertThat(target.received, equalTo(null));
+        
+        source.bind(target);
+        assertThat(target.received, equalTo(15));
+
+        source.set(35);
+        assertThat(target.received, equalTo(35));
     }
 }
