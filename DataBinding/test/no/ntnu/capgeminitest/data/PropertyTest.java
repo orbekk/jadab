@@ -53,6 +53,5 @@ public class PropertyTest {
         property_.addListener(listener);
         property_.set(25);
         assertThat(listener.received, equalTo(25));
-        
     }
 }
