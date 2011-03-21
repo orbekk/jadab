@@ -106,4 +106,21 @@ public class PropertyTest {
         source.set(35);
         assertThat(target.received, equalTo(35));
     }
+    
+    @Test
+    public void testMultipleTargets() {
+        Property<Integer> source = new Property<Integer>(38);
+        Property<Integer> target1 = new Property<Integer>(null);
+        Property<Integer> target2 = new Property<Integer>(null);
+        
+        source.bind(target1);
+        source.bind(target2);
+
+        assertThat(target1.get(), equalTo(38));
+        assertThat(target2.get(), equalTo(38));
+        
+        source.set(1);
+        assertThat(target1.get(), equalTo(1));
+        assertThat(target2.get(), equalTo(1));
+    }
 }
