@@ -62,6 +62,7 @@ public class Property<T> {
      */
     public void set(T data) {
         this.data = data;
+        onChange(data);
         notifyListeners();
     }
 
