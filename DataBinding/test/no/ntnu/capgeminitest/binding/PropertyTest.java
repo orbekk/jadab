@@ -133,7 +133,7 @@ public class PropertyTest {
         source.bind().to(target1).build();
         assertThat(target1.get(), equalTo(38));
         
-        source.bind().to(target1).withDefaultValue(50).build();
+        source.bind().to(target1).withConstantValue(50).build();
         assertThat(target1.get(), equalTo(50));
     }
 }

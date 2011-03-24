@@ -19,7 +19,7 @@ public class BindingBuilder<T> {
         return this;
     }
     
-    public BindingBuilder<T> withDefaultValue(T defaultValue) {
+    public BindingBuilder<T> withConstantValue(T defaultValue) {
         useConstantValue = true;
         this.constantValue = defaultValue;
         return this;
