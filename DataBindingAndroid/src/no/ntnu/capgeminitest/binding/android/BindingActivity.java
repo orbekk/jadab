@@ -22,11 +22,10 @@ public abstract class BindingActivity extends Activity {
     }
     
     private LayoutInflater getBindingLayoutInflater() {
-        LayoutInflater inflater = getLayoutInflater();
+        LayoutInflater inflater = getLayoutInflater().cloneInContext(this);
         BindingFactory factory = new BindingFactory(inflater);
-        LayoutInflater bindingInflater = inflater.cloneInContext(this);
-        bindingInflater.setFactory(factory);
+        inflater.setFactory(factory);
         
-        return bindingInflater;
+        return inflater;
     }
 }

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:capgeminitest="http://org.ntnu.no/capgeminitest/DataBinding"
+    xmlns:binding="http://org.ntnu.no/capgeminitest/DataBinding"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    capgeminitest:test="test_value0"
     >
 <TextView
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:text="@string/hello"
-    capgeminitest:bindable="true"
-    capgeminitest:test="test_value"
+    binding:bindable="true"
     />
 </LinearLayout>
