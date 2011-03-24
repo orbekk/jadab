@@ -9,21 +9,54 @@ import no.ntnu.capgeminitest.data.Property;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 
 public class BindingFactory implements LayoutInflater.Factory {
 
+    /**
+     * The ViewFactory is used for testing.
+     */
+    interface ViewFactory {
+        public View createView(String name, String prefix, AttributeSet attrs)
+                throws InflateException, ClassNotFoundException;
+    }
+    
+    static class InflaterViewFactory implements ViewFactory {
+        private LayoutInflater inflater;
+        
+        public InflaterViewFactory(LayoutInflater inflater) {
+            this.inflater = inflater;
+        }
+        
+        @Override
+        public View createView(String name, String prefix, AttributeSet attrs) 
+                throws InflateException, ClassNotFoundException {
+            return inflater.createView(name, prefix, attrs);
+        }
+    }
+    
     public static final String TAG = "BindingFactory";
     
     private PropertyProviderFactory propertyProviderFactory;
-    private LayoutInflater originalInflater;
+    private ViewFactory viewFactory;
     private Map<String, Property<?>> boundProperties;
     
     public BindingFactory(PropertyProviderFactory propertyProviderFactory,
             LayoutInflater originalInflater) {
         this.propertyProviderFactory = propertyProviderFactory;
-        this.originalInflater = originalInflater;
+        this.viewFactory = new InflaterViewFactory(originalInflater);
+    }
+    
+    /**
+     * Constructor used for testing.
+     * 
+     */
+    BindingFactory(PropertyProviderFactory propertyProviderFactory,
+            ViewFactory viewFactory) {
+        this.propertyProviderFactory = propertyProviderFactory;
+        this.viewFactory = viewFactory;
     }
     
     @Override
@@ -37,7 +70,7 @@ public class BindingFactory implements LayoutInflater.Factory {
             Log.d(TAG, "Trying to inflate with properties.");
             try {
                 String prefix = AndroidPrefix.getComponentPrefix(name);
-                View view = originalInflater.createView(name, prefix, attrs);
+                View view = viewFactory.createView(name, prefix, attrs);
                 Log.d(TAG, "Inflated view of type: " + view.getClass().getName());
                 
                 performBindings(bindingAttrs, view);
@@ -89,7 +122,7 @@ public class BindingFactory implements LayoutInflater.Factory {
      * 
      * This corresponds to the (attrName,attrValue) values from the XML.
      */
-    private Map<String, String> getBindingAttrs(AttributeSet attrs) {
+    protected Map<String, String> getBindingAttrs(AttributeSet attrs) {
         Map<String, String> bindingAttrs = new HashMap<String, String>();
         
         int count = attrs.getAttributeCount();
