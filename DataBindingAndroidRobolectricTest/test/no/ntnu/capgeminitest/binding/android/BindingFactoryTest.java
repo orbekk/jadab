@@ -47,7 +47,8 @@ public class BindingFactoryTest {
         protected Map<String, String> getBindingAttrs(AttributeSet unused) {
             Map<String, String> bindingAttrs = new HashMap<String, String>();
             bindingAttrs.put("OnClickTo", "OnClickToTarget");
-            return bindingAttrs;
+            bindingAttrs.put("OnClickFrom", "OnClickFromTarget");
+            return bindingAttrs;           
         }
     }
     
@@ -64,12 +65,27 @@ public class BindingFactoryTest {
     }
     
     @Test
-    public void testOnClickProperty() {
+    public void testOnClickToProperty() {
         bindingFactory.onCreateView("View", null, null);
         Property<?> onClickProperty = bindingFactory.getBoundProperties()
                 .get("OnClickToTarget");
         Object object1 = onClickProperty.get();
         view.performClick();
         assertThat(onClickProperty.get(), not(equalTo(object1)));
+    }
+    
+    @Test
+    public void testOnClickFromProperty() {
+        bindingFactory.onCreateView("View", null, null);
+        Property<?> onClickToProperty = bindingFactory.getBoundProperties()
+                .get("OnClickToTarget");
+        Property<?> onClickFromProperty_ = bindingFactory.getBoundProperties()
+                .get("OnClickFromTarget");
+        @SuppressWarnings("unchecked")
+        Property<Object> onClickFromProperty = (Property<Object>)onClickFromProperty_;
+        
+        Object object1 = onClickToProperty.get();
+        onClickFromProperty.set(new Object());
+        assertThat(onClickToProperty.get(), not(equalTo(object1)));
     }
 }
