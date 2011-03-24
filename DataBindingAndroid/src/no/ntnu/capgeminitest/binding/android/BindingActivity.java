@@ -40,15 +40,15 @@ public abstract class BindingActivity extends Activity {
      * 
      * This is the
      */
-    public View createBoundView(int id, Map<String, Property<?>> bindings) {
+    public View createBoundView(int id) {
         BindingLayoutInflater inflater = getBindingLayoutInflater();
         View v = inflater.inflate(id, null);
         bindings.putAll(inflater.getBoundProperties());
         return v;
     }
     
-    public void setBoundContentView(int id, Map<String, Property<?>> bindings) {
-        setContentView(createBoundView(id, bindings));
+    public void setBoundContentView(int id) {
+        setContentView(createBoundView(id));
     }
     
     private BindingLayoutInflater getBindingLayoutInflater() {
@@ -58,4 +58,28 @@ public abstract class BindingActivity extends Activity {
         
         return new BindingLayoutInflater(inflater, factory);
     }
+    
+    @SuppressWarnings("unchecked")
+    protected void bind(String propertyXmlName, Property property) {
+        if (bindings.get(propertyXmlName) == null) {
+            throw new RuntimeException("Could not bind " + propertyXmlName +
+                    ": Binding not found.");
+        }
+        
+        Property source = bindings.get(propertyXmlName);
+        source.bind(property);
+        property.bind(source);
+    }
+    
+    @SuppressWarnings("unchecked")
+    protected void bind(String propertyXmlName, Property property, Object constantValue) {
+        if (bindings.get(propertyXmlName) == null) {
+            throw new RuntimeException("Could not bind " + propertyXmlName +
+                    ": Binding not found.");
+        }
+        
+        Property source = bindings.get(propertyXmlName);
+        source.bind().to(property).withConstantValue(constantValue).build();
+        property.bind().to(source).withConstantValue(constantValue);
+    }       
 }
