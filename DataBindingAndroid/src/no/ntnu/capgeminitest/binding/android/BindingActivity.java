@@ -1,5 +1,6 @@
 package no.ntnu.capgeminitest.binding.android;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import no.ntnu.capgeminitest.binding.Property;
@@ -11,7 +12,7 @@ import android.view.ViewGroup;
 
 public abstract class BindingActivity extends Activity {
     
-    private Map<String, Property<?>> bindings;
+    private Map<String, Property<?>> bindings = new HashMap<String, Property<?>>();
     
     public class BindingLayoutInflater {
         private LayoutInflater inflater;
