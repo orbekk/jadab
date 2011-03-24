@@ -1,5 +1,6 @@
 package no.ntnu.capgeminitest.dbacalculator;
 
+import no.ntnu.capgeminitest.binding.android.BindingActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
-public class DbaCalculator extends Activity {
+public class DbaCalculator extends BindingActivity {
     public static final String TAG = "DbaCalculator";
     public static final String dbaNamespace = "http://org.ntnu.no/groups/capgeminitest/data-binding/";
     
@@ -17,18 +18,18 @@ public class DbaCalculator extends Activity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate()");
         
-        LayoutInflater.Factory viewFactory = new LayoutInflater.Factory() {
-            @Override public View onCreateView(String name, Context context, AttributeSet attrs) {
-                return calcOnCreateView(name, context, attrs);
-            }
-        };
-        
-        LayoutInflater inflater = (LayoutInflater)this.getSystemService(
-                Context.LAYOUT_INFLATER_SERVICE);
-        inflater = inflater.cloneInContext(this);
-        inflater.setFactory(viewFactory);
-        View layout = inflater.inflate(R.layout.main, null, false);
-        setContentView(layout);
+//        LayoutInflater.Factory viewFactory = new LayoutInflater.Factory() {
+//            @Override public View onCreateView(String name, Context context, AttributeSet attrs) {
+//                return calcOnCreateView(name, context, attrs);
+//            }
+//        };
+//        
+//        LayoutInflater inflater = (LayoutInflater)this.getSystemService(
+//                Context.LAYOUT_INFLATER_SERVICE);
+//        inflater = inflater.cloneInContext(this);
+//        inflater.setFactory(viewFactory);
+//        View layout = inflater.inflate(R.layout.main, null, false);
+        setContentViewWithBindings(R.layout.main, null);
     }
     
     public View calcOnCreateView(String name, Context context, AttributeSet attrs) {

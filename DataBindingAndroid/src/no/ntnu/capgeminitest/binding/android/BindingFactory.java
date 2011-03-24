@@ -26,6 +26,22 @@ public class BindingFactory implements LayoutInflater.Factory {
             Log.d(TAG, "\t" + attrName + ": " + attrValue);
         }
         
-        return null;
+        if (isBindable(attrs)) {
+            Log.d(TAG, "Bindable view: " + name);
+            Log.d(TAG, "Trying to inflate from custom class.");
+            try {
+                String prefix = AndroidPrefix.getComponentPrefix(name);
+                return originalInflater.createView(name, prefix, attrs);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException("Tried to bind view: " + name +
+                        " but could not find bindable class: " + e.getMessage());
+            }
+        } else {       
+            return null;
+        }
+    }
+    
+    public boolean isBindable(AttributeSet attrs) {
+        return attrs.getAttributeBooleanValue(Constants.NAMESPACE, "bindable", false);
     }
 }
