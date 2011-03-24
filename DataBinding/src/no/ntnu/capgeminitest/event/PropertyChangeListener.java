@@ -1,7 +1,8 @@
 package no.ntnu.capgeminitest.event;
 
 import java.util.EventListener;
-import no.ntnu.capgeminitest.data.Property;
+
+import no.ntnu.capgeminitest.binding.Property;
 
 /**
  * An event for a change of a property.

@@ -1,8 +1,9 @@
-package no.ntnu.capgeminitest.data;
+package no.ntnu.capgeminitest.binding;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
+import no.ntnu.capgeminitest.binding.Property;
 import no.ntnu.capgeminitest.event.PropertyChangeListener;
 
 import org.junit.Before;

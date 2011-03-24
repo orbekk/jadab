@@ -1,7 +1,7 @@
 package no.ntnu.capgeminitest.binding.android.propertyprovider;
 
 import android.view.View;
-import no.ntnu.capgeminitest.data.Property;
+import no.ntnu.capgeminitest.binding.Property;
 
 public interface PropertyProvider {
     /**

@@ -1,4 +1,4 @@
-package no.ntnu.capgeminitest.data;
+package no.ntnu.capgeminitest.binding;
 
 import java.util.List;
 import java.util.ArrayList;

@@ -5,7 +5,7 @@ import java.util.List;
 
 import android.view.View;
 
-import no.ntnu.capgeminitest.data.Property;
+import no.ntnu.capgeminitest.binding.Property;
 
 /**
  * Combines several {@code PropertyProvider}s to a single PropertyProvider.

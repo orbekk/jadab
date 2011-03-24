@@ -2,8 +2,8 @@ package no.ntnu.capgeminitest.binding.android;
 
 import java.util.Map;
 
+import no.ntnu.capgeminitest.binding.Property;
 import no.ntnu.capgeminitest.binding.android.propertyprovider.PropertyProviderFactory;
-import no.ntnu.capgeminitest.data.Property;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;

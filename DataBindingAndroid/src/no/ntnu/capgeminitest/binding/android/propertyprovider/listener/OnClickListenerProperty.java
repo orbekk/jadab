@@ -2,7 +2,7 @@ package no.ntnu.capgeminitest.binding.android.propertyprovider.listener;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import no.ntnu.capgeminitest.data.Property;
+import no.ntnu.capgeminitest.binding.Property;
 
 /**
  * Set a property on every click event.

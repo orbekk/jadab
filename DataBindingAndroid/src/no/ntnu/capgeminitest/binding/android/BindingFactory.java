@@ -3,9 +3,9 @@ package no.ntnu.capgeminitest.binding.android;
 import java.util.HashMap;
 import java.util.Map;
 
+import no.ntnu.capgeminitest.binding.Property;
 import no.ntnu.capgeminitest.binding.android.propertyprovider.PropertyProvider;
 import no.ntnu.capgeminitest.binding.android.propertyprovider.PropertyProviderFactory;
-import no.ntnu.capgeminitest.data.Property;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;

@@ -6,8 +6,8 @@ import static org.hamcrest.CoreMatchers.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import no.ntnu.capgeminitest.binding.Property;
 import no.ntnu.capgeminitest.binding.android.propertyprovider.PropertyProviderFactory;
-import no.ntnu.capgeminitest.data.Property;
 
 import org.junit.Before;
 import org.junit.Test;

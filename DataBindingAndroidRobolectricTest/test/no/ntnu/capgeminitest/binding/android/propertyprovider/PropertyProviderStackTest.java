@@ -3,7 +3,7 @@ package no.ntnu.capgeminitest.binding.android.propertyprovider;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
-import no.ntnu.capgeminitest.data.Property;
+import no.ntnu.capgeminitest.binding.Property;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
