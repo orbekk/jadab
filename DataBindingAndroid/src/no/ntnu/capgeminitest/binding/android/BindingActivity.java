@@ -55,6 +55,6 @@ public abstract class BindingActivity extends Activity {
         BindingFactory factory = new BindingFactory(propertyProviderFactory, inflater);
         inflater.setFactory(factory);
         
-        return inflater;
+        return new BindingLayoutInflater(inflater, factory);
     }
 }
