@@ -1,5 +1,6 @@
 package no.ntnu.capgeminitest.binding.android.propertyprovider;
 
+import android.view.View;
 import no.ntnu.capgeminitest.data.Property;
 
 public interface PropertyProvider {
@@ -8,6 +9,8 @@ public interface PropertyProvider {
      * 
      * Example: For a bindingName such as "textTo" on a TextView, create a
      * property that will be updated when the text is changed.
+     * 
+     * The property will be bound to the view using.
      */
-    Property<?> getProperty(String bindingName);
+    Property<?> getBoundProperty(View view, String bindingName);
 }

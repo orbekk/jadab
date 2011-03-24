@@ -3,6 +3,8 @@ package no.ntnu.capgeminitest.binding.android.propertyprovider;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.view.View;
+
 import no.ntnu.capgeminitest.data.Property;
 
 /**
@@ -36,9 +38,9 @@ public class PropertyProviderStack implements PropertyProvider {
     private List<PropertyProvider> providers = new ArrayList<PropertyProvider>();
     
     @Override
-    public Property<?> getProperty(String bindingName) {
+    public Property<?> getBoundProperty(View view, String bindingName) {
         for (PropertyProvider provider : providers) {
-            Property<?> property = provider.getProperty(bindingName);
+            Property<?> property = provider.getBoundProperty(view, bindingName);
             if (property != null) {
                 return property;
             }

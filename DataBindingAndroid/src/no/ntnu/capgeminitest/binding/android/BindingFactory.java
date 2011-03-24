@@ -59,7 +59,7 @@ public class BindingFactory implements LayoutInflater.Factory {
             String bindingName = entry.getKey();
             String propertyName = entry.getValue();
             
-            Property<?> property = provider.getProperty(bindingName);
+            Property<?> property = provider.getBoundProperty(view, bindingName);
             if (property == null) {
                 throw new RuntimeException("Unable to perform binding '" + bindingName +
                         "'='" + propertyName + "': Unknown property.");
