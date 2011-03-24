@@ -145,4 +145,8 @@ public class BindingFactory implements LayoutInflater.Factory {
     public boolean hasBindings(AttributeSet attrs) {
         return attrs.getAttributeBooleanValue(Constants.NAMESPACE, "bindable", false);
     }
+
+    public Map<String, Property<?>> getBoundProperties() {
+        return boundProperties;
+    }
 }
