@@ -3,12 +3,8 @@ package no.ntnu.capgeminitest.binding.android.propertyprovider.listener;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
-import no.ntnu.capgeminitest.data.Property;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import android.view.View;
 
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 
