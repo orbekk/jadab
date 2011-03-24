@@ -136,4 +136,13 @@ public class PropertyTest {
         source.bind().to(target1).withConstantValue(50).build();
         assertThat(target1.get(), equalTo(50));
     }
+    
+    @Test(timeout = 100)
+    public void testDoubleBinding() {
+        Property<Integer> p1 = new Property<Integer>(1);
+        Property<Integer> p2 = new Property<Integer>(2);
+        
+        p1.bind(p2);
+        p2.bind(p1);
+    }
 }

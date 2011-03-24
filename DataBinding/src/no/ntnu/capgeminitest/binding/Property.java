@@ -86,9 +86,13 @@ public class Property<T> {
      * Notifies listeners that the data was changed.
      */
     public void set(T data) {
-        this.data = data;
-        onChange(data);
-        notifyListeners();
+        if (this.data == data || (this.data != null && this.data.equals(data))) {
+            this.data = data;
+        } else {
+            this.data = data;
+            onChange(data);
+            notifyListeners();
+        }
     }
 
     protected void notifyListeners() {
