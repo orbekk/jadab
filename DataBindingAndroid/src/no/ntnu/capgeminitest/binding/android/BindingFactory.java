@@ -41,7 +41,7 @@ public class BindingFactory implements LayoutInflater.Factory {
     
     private PropertyProviderFactory propertyProviderFactory;
     private ViewFactory viewFactory;
-    private Map<String, Property<?>> boundProperties;
+    private Map<String, Property<?>> boundProperties = new HashMap<String, Property<?>>();
     
     public BindingFactory(PropertyProviderFactory propertyProviderFactory,
             LayoutInflater originalInflater) {
