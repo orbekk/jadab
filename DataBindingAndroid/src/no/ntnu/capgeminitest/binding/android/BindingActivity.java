@@ -7,8 +7,29 @@ import no.ntnu.capgeminitest.binding.android.propertyprovider.PropertyProviderFa
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 public abstract class BindingActivity extends Activity {
+    
+    private Map<String, Property<?>> bindings;
+    
+    public class BindingLayoutInflater {
+        private LayoutInflater inflater;
+        private BindingFactory bindingFactory;
+        
+        public BindingLayoutInflater(LayoutInflater inflater, BindingFactory bindingFactory) {
+            this.inflater = inflater;
+            this.bindingFactory = bindingFactory;
+        }
+        
+        public View inflate(int resource, ViewGroup root) {
+            return inflater.inflate(resource, root);
+        }
+        
+        public Map<String, Property<?>> getBoundProperties() {
+            return bindingFactory.getBoundProperties();
+        }
+    }
     
     private PropertyProviderFactory propertyProviderFactory =
             PropertyProviderFactory.getDefaultFactory();
@@ -18,15 +39,18 @@ public abstract class BindingActivity extends Activity {
      * 
      * This is the
      */
-    public View createBindingView(int id, Map<String, Property<?>> bindings) {
-        return getBindingLayoutInflater().inflate(id, null);
+    public View createBoundView(int id, Map<String, Property<?>> bindings) {
+        BindingLayoutInflater inflater = getBindingLayoutInflater();
+        View v = inflater.inflate(id, null);
+        bindings.putAll(inflater.getBoundProperties());
+        return v;
     }
     
-    public void setContentViewWithBindings(int id, Map<String, Property<?>> bindings) {
-        setContentView(createBindingView(id, bindings));
+    public void setBoundContentView(int id, Map<String, Property<?>> bindings) {
+        setContentView(createBoundView(id, bindings));
     }
     
-    private LayoutInflater getBindingLayoutInflater() {
+    private BindingLayoutInflater getBindingLayoutInflater() {
         LayoutInflater inflater = getLayoutInflater().cloneInContext(this);
         BindingFactory factory = new BindingFactory(propertyProviderFactory, inflater);
         inflater.setFactory(factory);
