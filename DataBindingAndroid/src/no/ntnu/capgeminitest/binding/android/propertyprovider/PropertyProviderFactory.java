@@ -30,6 +30,7 @@ public class PropertyProviderFactory {
     public static PropertyProviderFactory getDefaultFactory() {
         PropertyProviderFactory factory = new PropertyProviderFactory();
         factory.addPropertyProvider(new ViewPropertyProvider());
+        factory.addPropertyProvider(new TextViewPropertyProvider());
         return factory;
     }
 }
