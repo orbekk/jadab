@@ -16,18 +16,7 @@ public class DbaCalculator extends BindingActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate()");
         
-//        LayoutInflater.Factory viewFactory = new LayoutInflater.Factory() {
-//            @Override public View onCreateView(String name, Context context, AttributeSet attrs) {
-//                return calcOnCreateView(name, context, attrs);
-//            }
-//        };
-//        
-//        LayoutInflater inflater = (LayoutInflater)this.getSystemService(
-//                Context.LAYOUT_INFLATER_SERVICE);
-//        inflater = inflater.cloneInContext(this);
-//        inflater.setFactory(viewFactory);
-//        View layout = inflater.inflate(R.layout.main, null, false);
-        setContentViewWithBindings(R.layout.main, null);
+        setBoundContentView(R.layout.main, null);
     }
     
     public View calcOnCreateView(String name, Context context, AttributeSet attrs) {
