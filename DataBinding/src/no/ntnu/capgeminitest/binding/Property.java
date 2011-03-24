@@ -67,6 +67,20 @@ public class Property<T> {
     }
     
     /**
+     * Create a binding builder with this as the source.
+     * 
+     * Example:
+     * <pre>
+     * {@code
+     * property.bind().to(anotherProperty).build();
+     * }
+     * </pre>
+     */
+    public BindingBuilder<T> bind() {
+        return new BindingBuilder<T>().from(this);
+    }
+    
+    /**
      * Set the data for this property.
      * 
      * Notifies listeners that the data was changed.

@@ -124,4 +124,16 @@ public class PropertyTest {
         assertThat(target1.get(), equalTo(1));
         assertThat(target2.get(), equalTo(1));
     }
+    
+    @Test
+    public void testBuilder() {
+        Property<Integer> source = new Property<Integer>(38);
+        Property<Integer> target1 = new Property<Integer>(null);
+        
+        source.bind().to(target1).build();
+        assertThat(target1.get(), equalTo(38));
+        
+        source.bind().to(target1).withDefaultValue(50).build();
+        assertThat(target1.get(), equalTo(50));
+    }
 }
