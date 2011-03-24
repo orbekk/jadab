@@ -24,8 +24,11 @@ public class PropertyProviderStackTest {
         
         @Override
         public Property<?> getProperty(String bindingName) {
-            assertThat(bindingName, equalTo(this.bindingName));
-            return property;
+            if (bindingName.equals(this.bindingName)) {
+                return property;
+            } else {
+                return null;
+            }
         }
     }
     
@@ -43,4 +46,26 @@ public class PropertyProviderStackTest {
         assertThat((String)stack.getProperty("bindingName1").get(), equalTo("property1"));
     }
     
+    @Test
+    public void testProviderOverride1() {
+        stack.addProvider(pp1);
+        stack.addProvider(pp2);
+        assertThat((String)stack.getProperty("bindingName1").get(), equalTo("property1"));
+    }
+    
+    @Test
+    public void testProviderOverride2() {
+        stack.addProvider(pp2);
+        stack.addProvider(pp1);
+        assertThat((String)stack.getProperty("bindingName1").get(), equalTo("property2"));
+    }
+    
+    @Test
+    public void testMultipleBindingNames() {
+        stack.addProvider(pp1);
+        stack.addProvider(pp2);
+        stack.addProvider(pp3);
+        assertThat((String)stack.getProperty("bindingName1").get(), equalTo("property1"));
+        assertThat((String)stack.getProperty("bindingName2").get(), equalTo("property3"));
+    }
 }
