@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import no.ntnu.capgeminitest.event.PropertyChangeListener;
+import no.ntnu.capgeminitest.util.ObjectUtil;
 
 /**
  * Hold a property for a class.
@@ -58,12 +59,14 @@ public class Property<T> {
     /** 
      * Create a binding between this property and {@code other}.
      * 
-     * Immediately notify {@code other} of our value.
+     * Immediately notify {@code other} of our value, unless our value is null.
      */
     public void bind(Property<T> other) {
         PropertyChangeListener<T> listener = other.getOnPropertyChangeUpdater();
         addListener(listener);
-        listener.propertyChanged(this);
+        if (get() != null) {
+            listener.propertyChanged(this);
+        }
     }
     
     /**
@@ -86,7 +89,7 @@ public class Property<T> {
      * Notifies listeners that the data was changed.
      */
     public void set(T data) {
-        if (this.data == data || (this.data != null && this.data.equals(data))) {
+        if (ObjectUtil.equals(this.data, data)) {
             this.data = data;
         } else {
             this.data = data;
