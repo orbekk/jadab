@@ -16,7 +16,11 @@ public class DbaCalculator extends BindingActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate()");
         
-        setBoundContentView(R.layout.main, null);
+        DbaCalculatorLogic logic = new DbaCalculatorLogic();
+        setBoundContentView(R.layout.main);
+        
+        bind("DisplayText", logic.text);
+        bind("TextClicked", logic.numberIncrementer);
     }
     
     public View calcOnCreateView(String name, Context context, AttributeSet attrs) {
