@@ -20,7 +20,8 @@ public class DbaCalculator extends BindingActivity {
         setBoundContentView(R.layout.main);
         
         bind("DisplayText", logic.text);
-        bind("TextClicked", logic.numberIncrementer);
+        bind("IntrementButtonOnClick", logic.numberIncrementer);
+        bind("DecrementButtonOnClick", logic.numberDecrementer);
     }
     
     public View calcOnCreateView(String name, Context context, AttributeSet attrs) {
