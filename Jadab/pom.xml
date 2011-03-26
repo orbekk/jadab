@@ -28,6 +28,13 @@
       <version>2.2.1</version>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>com.pivotallabs</groupId>
+      <artifactId>robolectric</artifactId>
+      <version>0.9.6</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
