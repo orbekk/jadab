@@ -14,22 +14,8 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android;
+package com.github.binding.android.propertyprovider;
 
-/**
- * TODO(orbekk): We should start using something like this instead of getting
- * one million bugs in the PropertyProviders due to stupid string constants!
- */
-public enum BindingName {
-    ON_CLICK_TO("OnClickTo");
-    
-    private String bindingName;
-    
-    private BindingName(String bindingName) {
-        this.bindingName = bindingName;
-    }
-    
-    public String getBindingName() {
-        return bindingName;
-    }
+public abstract class AbstractPropertyProvider implements PropertyProvider {  
+    public abstract Class<?> providerForClass();
 }

@@ -14,8 +14,19 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android;
+package com.github.event;
 
-public class Constants {
-    public static final String NAMESPACE="http://org.ntnu.no/capgeminitest/DataBinding";
+import java.util.EventListener;
+
+import com.github.binding.Property;
+
+
+/**
+ * An event for a change of a property.
+ * 
+ * The property is of type {@Property<T>}.
+ */
+public interface PropertyChangeListener<T> extends EventListener {
+    
+    void propertyChanged(Property<T> property);
 }

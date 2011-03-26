@@ -14,7 +14,7 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android.propertyprovider;
+package com.github.binding.android.propertyprovider;
 
 import java.util.HashMap;
 import java.util.Map;

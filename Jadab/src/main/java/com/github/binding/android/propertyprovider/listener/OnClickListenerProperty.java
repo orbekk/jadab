@@ -14,8 +14,22 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android.propertyprovider;
+package com.github.binding.android.propertyprovider.listener;
 
-public abstract class AbstractPropertyProvider implements PropertyProvider {  
-    public abstract Class<?> providerForClass();
+import com.github.binding.Property;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+
+/**
+ * Set a property on every click event.
+ * 
+ * Creates a new dummy object every time a click event is received.
+ */
+public class OnClickListenerProperty implements OnClickListener {
+    public Property<Object> property = new Property<Object>(null);
+    
+    public void onClick(View v) {
+        property.set(new Object());
+    }
 }

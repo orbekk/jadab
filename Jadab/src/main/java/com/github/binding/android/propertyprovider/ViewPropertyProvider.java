@@ -14,11 +14,12 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android.propertyprovider;
+package com.github.binding.android.propertyprovider;
+
+import com.github.binding.Property;
+import com.github.binding.android.propertyprovider.listener.OnClickListenerProperty;
 
 import android.view.View;
-import no.ntnu.binding.Property;
-import no.ntnu.binding.android.propertyprovider.listener.OnClickListenerProperty;
 
 public class ViewPropertyProvider extends AbstractPropertyProvider {
 

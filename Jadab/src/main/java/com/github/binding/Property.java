@@ -14,13 +14,14 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding;
+package com.github.binding;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import no.ntnu.event.PropertyChangeListener;
-import no.ntnu.util.ObjectUtil;
+import com.github.event.PropertyChangeListener;
+import com.github.util.ObjectUtil;
+
 
 /**
  * Hold a property for a class.

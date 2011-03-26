@@ -14,18 +14,20 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.event;
+package com.github.binding.android.propertyprovider;
 
-import java.util.EventListener;
+import com.github.binding.Property;
 
-import no.ntnu.binding.Property;
+import android.view.View;
 
-/**
- * An event for a change of a property.
- * 
- * The property is of type {@Property<T>}.
- */
-public interface PropertyChangeListener<T> extends EventListener {
-    
-    void propertyChanged(Property<T> property);
+public interface PropertyProvider {
+    /**
+     * Return a property for the binding with name {@code bindingName}.
+     * 
+     * Example: For a bindingName such as "textTo" on a TextView, create a
+     * property that will be updated when the text is changed.
+     * 
+     * The property will be bound to the view using.
+     */
+    Property<?> getBoundProperty(View view, String bindingName);
 }

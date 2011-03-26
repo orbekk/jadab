@@ -14,7 +14,7 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.util;
+package com.github.util;
 
 public class ObjectUtil {
     public static boolean equals(Object a, Object b) {

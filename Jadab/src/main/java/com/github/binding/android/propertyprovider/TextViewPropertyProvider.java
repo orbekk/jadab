@@ -14,9 +14,10 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android.propertyprovider;
+package com.github.binding.android.propertyprovider;
 
-import no.ntnu.binding.Property;
+import com.github.binding.Property;
+
 import android.view.View;
 import android.widget.TextView;
 

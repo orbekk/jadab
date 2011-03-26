@@ -14,14 +14,15 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android.propertyprovider;
+package com.github.binding.android.propertyprovider;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.binding.Property;
+
 import android.view.View;
 
-import no.ntnu.binding.Property;
 
 /**
  * Combines several {@code PropertyProvider}s to a single PropertyProvider.

@@ -14,21 +14,16 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android.propertyprovider.listener;
+package com.github.binding.android;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import no.ntnu.binding.Property;
-
-/**
- * Set a property on every click event.
- * 
- * Creates a new dummy object every time a click event is received.
- */
-public class OnClickListenerProperty implements OnClickListener {
-    public Property<Object> property = new Property<Object>(null);
-    
-    public void onClick(View v) {
-        property.set(new Object());
+public class AndroidPrefix {
+    public static String getComponentPrefix(String name) {
+        if (name == "View" || name == "ViewGroup") {
+            return "android.view.";
+        } else if (name.contains(".")) {
+            return null;
+        } else {
+            return "android.widget.";
+        }
     }
 }

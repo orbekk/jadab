@@ -14,13 +14,14 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android;
+package com.github.binding.android;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import no.ntnu.binding.Property;
-import no.ntnu.binding.android.propertyprovider.PropertyProviderFactory;
+import com.github.binding.Property;
+import com.github.binding.android.propertyprovider.PropertyProviderFactory;
+
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -14,16 +14,8 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android;
+package com.github.binding.android;
 
-public class AndroidPrefix {
-    public static String getComponentPrefix(String name) {
-        if (name == "View" || name == "ViewGroup") {
-            return "android.view.";
-        } else if (name.contains(".")) {
-            return null;
-        } else {
-            return "android.widget.";
-        }
-    }
+public class Constants {
+    public static final String NAMESPACE="http://org.ntnu.no/capgeminitest/DataBinding";
 }
