@@ -22,10 +22,9 @@ import static org.hamcrest.CoreMatchers.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.github.testrunner.JadabTestRunner;
 
-
-@RunWith(RobolectricTestRunner.class)
+@RunWith(JadabTestRunner.class)
 public class OnClickListenerPropertyTest {
     OnClickListenerProperty onClickListenerProperty = new OnClickListenerProperty();
     

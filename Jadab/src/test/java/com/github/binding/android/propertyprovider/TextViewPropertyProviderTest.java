@@ -26,10 +26,9 @@ import org.junit.runner.RunWith;
 
 import android.widget.TextView;
 
-import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.github.testrunner.JadabTestRunner;
 
-
-@RunWith(RobolectricTestRunner.class)
+@RunWith(JadabTestRunner.class)
 public class TextViewPropertyProviderTest {
     TextViewPropertyProvider provider = new TextViewPropertyProvider();
     TextView textView = new TextView(null);

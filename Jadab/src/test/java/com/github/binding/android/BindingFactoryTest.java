@@ -32,9 +32,9 @@ import org.junit.runner.RunWith;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.github.testrunner.JadabTestRunner;
 
-@RunWith(RobolectricTestRunner.class)
+@RunWith(JadabTestRunner.class)
 public class BindingFactoryTest {
     
     public class FakeViewFactory implements BindingFactory.ViewFactory {
