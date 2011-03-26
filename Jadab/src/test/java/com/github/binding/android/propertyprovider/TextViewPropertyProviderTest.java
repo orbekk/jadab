@@ -14,28 +14,36 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android.propertyprovider.listener;
+package com.github.binding.android.propertyprovider;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
+import com.github.binding.Property;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import android.widget.TextView;
 
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 
 
 @RunWith(RobolectricTestRunner.class)
-public class OnClickListenerPropertyTest {
-    OnClickListenerProperty onClickListenerProperty = new OnClickListenerProperty();
+public class TextViewPropertyProviderTest {
+    TextViewPropertyProvider provider = new TextViewPropertyProvider();
+    TextView textView = new TextView(null);
     
-    @Test
-    public void testOnClickListenerProperty() {
-        assertThat(onClickListenerProperty.property.get(), is(nullValue()));
-        onClickListenerProperty.onClick(null);
-        assertThat(onClickListenerProperty.property.get(), is(notNullValue()));
-        Object object1 = onClickListenerProperty.property.get();
-        onClickListenerProperty.onClick(null);
-        assertThat(onClickListenerProperty.property.get(), not(equalTo(object1)));
+    @Test public void testUnknownBindingName() {
+        assertThat(provider.getBoundProperty(textView, "UnknownBindingName"),
+                is(nullValue()));
+    }
+    
+    @Test public void testProperty() {
+        Property<?> property = provider.getBoundProperty(textView, "TextFrom");
+        @SuppressWarnings("unchecked")
+        Property<String> stringProperty = (Property<String>) property;
+        stringProperty.set("What's up?");
+        assertThat(textView.getText(), equalTo((CharSequence)"What's up?"));
     }
 }

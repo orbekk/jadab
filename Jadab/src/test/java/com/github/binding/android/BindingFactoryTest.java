@@ -14,7 +14,7 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android;
+package com.github.binding.android;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -22,8 +22,8 @@ import static org.hamcrest.CoreMatchers.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import no.ntnu.binding.Property;
-import no.ntnu.binding.android.propertyprovider.PropertyProviderFactory;
+import com.github.binding.Property;
+import com.github.binding.android.propertyprovider.PropertyProviderFactory;
 
 import org.junit.Before;
 import org.junit.Test;

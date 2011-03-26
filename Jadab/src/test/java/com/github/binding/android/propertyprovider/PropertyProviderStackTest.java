@@ -14,12 +14,12 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android.propertyprovider;
+package com.github.binding.android.propertyprovider;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
-import no.ntnu.binding.Property;
+import com.github.binding.Property;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

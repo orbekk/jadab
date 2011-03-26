@@ -14,36 +14,28 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.binding.android.propertyprovider;
+package com.github.binding.android.propertyprovider.listener;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
-import no.ntnu.binding.Property;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import android.widget.TextView;
 
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 
 
 @RunWith(RobolectricTestRunner.class)
-public class TextViewPropertyProviderTest {
-    TextViewPropertyProvider provider = new TextViewPropertyProvider();
-    TextView textView = new TextView(null);
+public class OnClickListenerPropertyTest {
+    OnClickListenerProperty onClickListenerProperty = new OnClickListenerProperty();
     
-    @Test public void testUnknownBindingName() {
-        assertThat(provider.getBoundProperty(textView, "UnknownBindingName"),
-                is(nullValue()));
-    }
-    
-    @Test public void testProperty() {
-        Property<?> property = provider.getBoundProperty(textView, "TextFrom");
-        @SuppressWarnings("unchecked")
-        Property<String> stringProperty = (Property<String>) property;
-        stringProperty.set("What's up?");
-        assertThat(textView.getText(), equalTo((CharSequence)"What's up?"));
+    @Test
+    public void testOnClickListenerProperty() {
+        assertThat(onClickListenerProperty.property.get(), is(nullValue()));
+        onClickListenerProperty.onClick(null);
+        assertThat(onClickListenerProperty.property.get(), is(notNullValue()));
+        Object object1 = onClickListenerProperty.property.get();
+        onClickListenerProperty.onClick(null);
+        assertThat(onClickListenerProperty.property.get(), not(equalTo(object1)));
     }
 }
