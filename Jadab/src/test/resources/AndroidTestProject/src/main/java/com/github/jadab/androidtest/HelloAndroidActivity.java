@@ -1,4 +1,4 @@
-package com.github.jadab;
+package com.github.jadab.androidtest;
 
 import android.app.Activity;
 import android.os.Bundle;
