@@ -1,37 +1,26 @@
-A data binding framework for use with Android
-=============================================
+Jadab - A Data Binding framework for Android
+============================================
 
 Usage
 -----
 
-The framework is organized as several Eclipse projects. We plan to move to a
-Maven based project setup, but at the time of writing the source code, we were
-using a pure Eclipse/Android setup.
+The framework is located in the Jadab/ subdirectory as a Maven project. See
+http://code.google.com/p/maven-android-plugin/wiki/GettingStarted for an
+introduction to Android development with Maven. In particular, make sure you
+have the `ANDROID_HOME` environment variable set.
 
-* **DataBinding**: The Data Binding framework. Defines `Property`. Properties can be bound to each other.
-* **DataBindingAndroid**: Allows using Data Bindings for Android components. Currently an extremely small subset of Android properties is supported.
-* **DataBindingAndroidRobolectricTest**: Test project for `DataBindingAndroid`. Uses [Robolectric][4] to unit test the framework components.
-* **DbaCalculator**: A small example project using the data binding framework.
+Clone the repository and install Jadab into your local Maven repository:
 
-To use the framework, first import all the projects in your Eclipse workspace:
+    $ git clone git://github.com/orbekk/jadab.git
+    $ cd jadab/Jadab
+    $ mvn test                           # Run Robolectric tests
+    $ mvn install
 
-1. File -> New -> Java project.
-2. Select "Create project from existing source."
-3. Find the project you want to import. Click finish.
+Now you should be able to build and run JadabExample.
 
-Then define the classpath variables used by DataBinding:
-
-1. Window -> Preferences -> Java -> Build path -> Classpath variables
-2. Select new.
-3. Define the following variable:
-
-    Name: Android8Jar
-    File: Browse to $YOUR_ANDROID_SDK/platforms/android-8/android.jar
-
-4. (Optional, if you want to execute the Robolectric tests) Define the following variable:
-
-    Name: RobolectricJar
-    File: Browse to the location of the Robolectric jar file.
+    $ cd JadabExample
+    $ mvn help:describe -Dplugin=android # See the available Android goals.
+    $ mvn package android:deploy         # Upload to device.
 
 
 Background
