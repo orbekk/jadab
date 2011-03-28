@@ -18,7 +18,7 @@ Clone the repository and install Jadab into your local Maven repository:
 
 Now you should be able to build and run JadabExample.
 
-    $ cd JadabExample
+    $ cd ../JadabExample
     $ mvn help:describe -Dplugin=android # See the available Android goals.
     $ mvn package android:deploy         # Upload to device.
 
