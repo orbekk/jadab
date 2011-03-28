@@ -6,7 +6,7 @@ import org.junit.runners.model.InitializationError;
 
 public class JadabTestRunner extends RobolectricTestRunner {
 
-    public final static String testProjectLocation = "src/test/resources/AndroidTest";
+    public final static String testProjectLocation = "src/test/resources/AndroidDummy";
 
     public JadabTestRunner(Class<?> testClass) throws InitializationError {
         super(testClass, new File(testProjectLocation));
