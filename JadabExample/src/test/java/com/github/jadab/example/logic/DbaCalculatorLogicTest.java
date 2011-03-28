@@ -14,7 +14,7 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.dbacalculator;
+package com.github.jadab.example.logic;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
