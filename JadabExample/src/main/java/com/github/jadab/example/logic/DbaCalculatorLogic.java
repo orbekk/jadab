@@ -14,9 +14,9 @@
  * limitations under the License. See accompanying LICENSE file.
  */
 
-package no.ntnu.dbacalculator;
+package com.github.jadab.example.logic;
 
-import no.ntnu.binding.Property;
+import com.github.binding.Property;
 
 public class DbaCalculatorLogic {
     public Property<String> text;
