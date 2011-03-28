@@ -5,9 +5,8 @@ Usage
 -----
 
 The framework is located in the Jadab/ subdirectory as a Maven project. See
-http://code.google.com/p/maven-android-plugin/wiki/GettingStarted for an
-introduction to Android development with Maven. In particular, make sure you
-have the `ANDROID_HOME` environment variable set.
+[Getting Started][5] for an introduction to Android development with Maven. In
+particular, make sure you have the `ANDROID_HOME` environment variable set.
 
 Clone the repository and install Jadab into your local Maven repository:
 
@@ -47,3 +46,4 @@ Some of the Android interaction was inspired by [android-binding][3].
 [2]: http://www.capgemini.com
 [3]: http://code.google.com/p/android-binding/
 [4]: http://pivotal.github.com/robolectric/
+[5]: http://code.google.com/p/maven-android-plugin/wiki/GettingStarted
