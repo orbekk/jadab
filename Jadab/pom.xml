@@ -12,6 +12,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.androidDummyLocation>
+      ${project.basedir}/src/test/resources/AndroidDummy
+    </project.androidDummyLocation>
   </properties>
 
   <dependencies>
@@ -32,8 +35,16 @@
     <dependency>
       <groupId>com.pivotallabs</groupId>
       <artifactId>robolectric</artifactId>
-      <version>0.9.6</version>
+      <version>0.9.7</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.androiddummy</groupId>
+      <artifactId>AndroidDummy</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.androidDummyLocation}/target/AndroidDummy-1.0-SNAPSHOT.jar</systemPath>
     </dependency>
   </dependencies>
 
