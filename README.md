@@ -38,6 +38,7 @@ The project group consisted of:
 * Lene Oddli Sundli
 * Magnus Eide
 * Njaal C. A. Gjerde
+* Trygve Tønnesland
 
 Some of the Android interaction was inspired by [android-binding][3].
 
