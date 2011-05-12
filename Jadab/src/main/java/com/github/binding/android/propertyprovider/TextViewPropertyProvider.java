@@ -17,6 +17,7 @@
 package com.github.binding.android.propertyprovider;
 
 import com.github.binding.Property;
+import com.github.binding.android.propertyprovider.listener.TextWatcherProperty;
 
 import android.view.View;
 import android.widget.TextView;
@@ -39,6 +40,10 @@ public class TextViewPropertyProvider extends AbstractPropertyProvider {
               }
             };
             return property;
+        } else if (bindingName.equals("TextTo")) {
+            TextWatcherProperty watcher = new TextWatcherProperty();
+            textView.addTextChangedListener(watcher);
+            return watcher.property;
         } else {
             return null;
         }
