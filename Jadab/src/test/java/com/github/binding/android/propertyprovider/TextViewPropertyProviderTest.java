@@ -21,6 +21,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 import com.github.binding.Property;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -44,5 +45,25 @@ public class TextViewPropertyProviderTest {
         Property<String> stringProperty = (Property<String>) property;
         stringProperty.set("What's up?");
         assertThat(textView.getText(), equalTo((CharSequence)"What's up?"));
+    }
+
+    @Test public void testTextToInitialValue() {
+        textView.setText("Initial text");
+        Property<?> property = provider.getBoundProperty(textView, "TextTo");
+        @SuppressWarnings("unchecked")
+        Property<String> stringProperty = (Property<String>) property;
+        assertThat(stringProperty.get(), equalTo("Initial text"));
+    }
+
+    @Ignore("TextWatchers are not properly supported in Robolectric.")
+    @Test public void testTextTo() {
+        textView.setText("Initial text");
+        Property<?> property = provider.getBoundProperty(textView, "TextTo");
+        @SuppressWarnings("unchecked")
+        Property<String> stringProperty = (Property<String>) property;
+        textView.setText("New text");
+        assertThat(stringProperty.get(), equalTo("New text"));
+        textView.setText("Yet another text");
+        assertThat(stringProperty.get(), equalTo("Yet another text"));
     }
 }

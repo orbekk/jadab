@@ -42,6 +42,7 @@ public class TextViewPropertyProvider extends AbstractPropertyProvider {
             return property;
         } else if (bindingName.equals("TextTo")) {
             TextWatcherProperty watcher = new TextWatcherProperty();
+            watcher.property.set(textView.getText().toString());
             textView.addTextChangedListener(watcher);
             return watcher.property;
         } else {

@@ -17,7 +17,7 @@ public class HelloAndroidActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		Log.i(TAG, "onCreate");
+        Log.i(TAG, "onCreate");
         setContentView(R.layout.main);
     }
 
