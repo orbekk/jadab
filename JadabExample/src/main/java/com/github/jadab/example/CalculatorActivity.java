@@ -16,9 +16,7 @@ public class CalculatorActivity extends BindingActivity {
 		Log.i(TAG, "onCreate");
 		DbaCalculatorLogic logic = new DbaCalculatorLogic();
 		setBoundContentView(R.layout.main);
-		bind("DisplayText", logic.text);
-		bind("IncrementButtonOnClick", logic.numberIncrementer);
-		bind("DecrementButtonOnClick", logic.numberDecrementer);
+		bindViewModel(logic);
     }
 
 }

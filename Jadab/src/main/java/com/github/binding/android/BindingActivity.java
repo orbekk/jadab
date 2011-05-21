@@ -20,14 +20,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.github.binding.Property;
+import com.github.binding.PropertyExtractor;
 import com.github.binding.android.propertyprovider.PropertyProviderFactory;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 public abstract class BindingActivity extends Activity {
+    
+    private static String TAG = "BindingActivity";
     
     private Map<String, Property<?>> bindings = new HashMap<String, Property<?>>();
     
@@ -86,5 +90,26 @@ public abstract class BindingActivity extends Activity {
         Property source = bindings.get(propertyXmlName);
         source.bind(property);
         property.bind(source);
-    }      
+    }
+    
+    /**
+     * Bind a view model.
+     * 
+     * Create bindings for all the properties defined in the content view
+     * to the properties in {@src viewModel}. Uses binding names from the
+     * layout xml.
+     * 
+     * @param viewModel An object that contains all the properties defined in
+     *         the bound content view.
+     */
+    @SuppressWarnings({"rawtypes"})
+    protected void bindViewModel(Object viewModel) {
+        PropertyExtractor extractor = new PropertyExtractor();
+
+        for (String propertyXmlName : bindings.keySet()) {
+            Log.i(TAG, "Binding property " + propertyXmlName);
+            Property target = extractor.unsafeGetNamedProperty(viewModel, propertyXmlName);
+            bind(propertyXmlName, target);
+        }
+    }
 }
